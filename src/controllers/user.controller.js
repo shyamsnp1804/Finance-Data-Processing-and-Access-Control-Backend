@@ -86,7 +86,7 @@ const refreshAccessToken = async (req, res) => {
 
     jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
 
-    // 🔥 Generate NEW access token WITH jti
+    // Generate NEW access token WITH jti
     const { v4: uuidv4 } = require("uuid");
 
     const newAccessToken = jwt.sign(
@@ -124,7 +124,7 @@ const me = async (req, res) => {
   }
 };
 
-// LOGOUT (🔥 REDIS BLACKLIST ADDED)
+// LOGOUT (REDIS BLACKLIST ADDED)
 const logoutUser = async (req, res) => {
   try {
     // 1️⃣ Blacklist ACCESS TOKEN
@@ -148,7 +148,7 @@ const logoutUser = async (req, res) => {
       }
     }
 
-    // 2️⃣ Remove refresh token from DB
+    // Remove refresh token from DB
     const refreshToken = req.cookies?.refreshToken;
     if (refreshToken) {
       await User.findOneAndUpdate(
@@ -157,7 +157,7 @@ const logoutUser = async (req, res) => {
       );
     }
 
-    // 3️⃣ Clear cookie
+    //  Clear cookie
     res.clearCookie("refreshToken", {
       httpOnly: true,
       sameSite: "strict",

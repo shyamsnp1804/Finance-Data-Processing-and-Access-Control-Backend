@@ -9,6 +9,12 @@ This project is a backend system for a finance dashboard application. It provide
 Swagger UI available at:
 https://finance-data-processing-and-access-ermo.onrender.com/api-docs/#/
 
+## ⚠️ Demo Note
+
+For demonstration and testing purposes, newly registered users are assigned the "admin" role by default.
+
+In a real-world production environment, role assignment would be restricted and managed by administrators to ensure proper access control and security.
+
 ---
 
 ## 🚀 Features
