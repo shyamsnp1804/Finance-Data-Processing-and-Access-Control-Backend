@@ -23,6 +23,10 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("Finance Dashboard API is running...");
+});
+
 app.use("/api/auth", authRoutes);
 
 app.use("/api/records", recordRoutes);
