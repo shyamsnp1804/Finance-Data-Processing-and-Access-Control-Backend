@@ -6,7 +6,18 @@ const options = {
     info: {
       title: "Finance Dashboard API",
       version: "1.0.0",
-      description: "API documentation",
+      description: `
+API documentation for Finance Dashboard Backend.
+
+🔐 Authentication:
+1. Login using /api/auth/login
+2. Copy the accessToken from response
+3. Click "Authorize" button (top right)
+4. Enter: Bearer <your_token>
+
+Example:
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      `,
     },
     servers: [
       {
@@ -22,6 +33,7 @@ const options = {
           type: "http",
           scheme: "bearer",
           bearerFormat: "JWT",
+          description: "Enter JWT token in format: Bearer <token>",
         },
       },
     },
