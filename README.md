@@ -4,6 +4,11 @@
 
 This project is a backend system for a finance dashboard application. It provides secure authentication, role-based access control, financial record management, and analytics APIs for dashboard insights.
 
+## 📄 API Documentation
+
+Swagger UI available at:
+https://finance-data-processing-and-access-ermo.onrender.com/api-docs/#/
+
 ---
 
 ## 🚀 Features
@@ -209,11 +214,6 @@ npm run dev
 ```
 
 ---
-
-## 📄 API Documentation
-
-Swagger UI available at:
-http://localhost:3000/api-docs
 
 ## 🔗 Demo
 
