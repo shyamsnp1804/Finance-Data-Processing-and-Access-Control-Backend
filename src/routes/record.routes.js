@@ -78,7 +78,7 @@ router.get("/", requireAuth, requireRole("viewer", "analyst", "admin"), getRecor
  * @swagger
  * /api/records/{id}:
  *   put:
- *     summary: Update a record (Admin only)
+ *     summary: Update a record
  *     tags: [Records]
  *     security:
  *       - bearerAuth: []
@@ -86,11 +86,28 @@ router.get("/", requireAuth, requireRole("viewer", "analyst", "admin"), getRecor
  *       - in: path
  *         name: id
  *         required: true
+ *         description: Record ID
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
+ *               type:
+ *                 type: string
+ *                 enum: [income, expense]
+ *               category:
+ *                 type: string
+ *               notes:
+ *                 type: string
  *     responses:
  *       200:
- *         description: Record updated
+ *         description: Record updated successfully
  */
 router.put("/:id", requireAuth, requireRole("admin"), updateRecord);
 
@@ -99,6 +116,7 @@ router.put("/:id", requireAuth, requireRole("admin"), updateRecord);
  * /api/records/{id}:
  *   delete:
  *     summary: Delete a record (Admin only)
+ *     description: Deletes a financial record by its ID. Only accessible by admin users.
  *     tags: [Records]
  *     security:
  *       - bearerAuth: []
@@ -106,11 +124,18 @@ router.put("/:id", requireAuth, requireRole("admin"), updateRecord);
  *       - in: path
  *         name: id
  *         required: true
+ *         description: ID of the record to delete
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Record deleted
+ *         description: Record deleted successfully
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Access denied (Admin only)
+ *       404:
+ *         description: Record not found
  */
 router.delete("/:id", requireAuth, requireRole("admin"), deleteRecord);
 
